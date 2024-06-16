@@ -12,29 +12,31 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-           Myapp {
-               MainContent()
-           }
+            Myapp {
+                MainContent()
+            }
         }
     }
 }
+
 @Composable
-fun Myapp(content:@Composable ()-> Unit){
+fun Myapp(content: @Composable () -> Unit) {
     MoviesappTheme {
         content()
     }
 }
 
 @Composable
-fun MainContent(){
+fun MainContent() {
     Text(text = "Hello World")
 }
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     MoviesappTheme {
-       Myapp {
-           MainContent()
-       }
+        Myapp {
+            MainContent()
+        }
     }
 }
