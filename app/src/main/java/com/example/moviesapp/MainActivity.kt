@@ -94,11 +94,12 @@ fun MainContent(
     )
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
-        LazyColumn(modifier = Modifier.fillMaxWidth()
+        LazyColumn(
+            modifier = Modifier.fillMaxWidth()
         ) {
             items(items = itemsList) {
-                MainContentRow(it){
-                    println("what is here : $it")
+                MainContentRow(movies = it) { movie ->
+                    println("what is here : $movie")
                 }
             }
         }
@@ -108,12 +109,12 @@ fun MainContent(
 }
 
 @Composable
-fun MainContentRow(movies: String, onItemClick:(String)-> Unit) {
+fun MainContentRow(movies: String, onItemClick: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-               onItemClick(movies)
+                onItemClick(movies)
             }
             .padding(2.dp)
             .size(100.dp),
