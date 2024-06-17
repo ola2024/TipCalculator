@@ -2,12 +2,17 @@ package com.example.moviesapp.components.widget
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,6 +30,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.moviesapp.navigation.screenroute.ScreenRoute
 
 @Composable
 fun MainContentRow(
@@ -67,6 +74,51 @@ fun MainContentRow(
 
 }
 
+@Composable
+fun HomeScreen(
+    itemsList: List<String> = listOf(
+        "Room To Go",
+        "Blad Runner",
+        "Vikings Room",
+        "Day of the Jacker",
+        "Woman Go To School",
+        "Room To Go",
+        "Blad Runner",
+        "Vikings Room",
+        "Day of the Jacker",
+        "Woman Go To School",
+        "Room To Go",
+        "Blad Runner",
+        "Vikings Room",
+        "Day of the Jacker",
+        "Woman Go To School",
+        "Room To Go",
+        "Blad Runner",
+        "Vikings Room",
+        "Day of the Jacker",
+        "Woman Go To School"
+    ),
+    navController: NavController,
+    onItemClick:(String) -> Unit
+) {
+    Column(modifier = Modifier.padding(10.dp)) {
+        LazyColumn(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            items(items = itemsList) {
+                MainContentRow(
+                    title = it,
+                    onItemClick = {
+                        navController.navigate(route = ScreenRoute.DetailsScreen.name + "/$it")
+                    },
+                    imageVector = Icons.Default.AccountBox
+                )
+            }
+        }
+
+    }
+
+}
 @ExperimentalMaterial3Api
 @Composable
 fun TopAppBarComposable(
