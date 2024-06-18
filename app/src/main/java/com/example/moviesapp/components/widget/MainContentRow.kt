@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -196,10 +197,9 @@ fun HomeScreen(
             items(items = itemsList) {
                 MainContentRow(
                     title = it,
-                    onItemClick = {
-                        navController.navigate(route = ScreenRoute.DetailsScreen.name + "/${it.movieImdbID}")
-                    },
-                )
+                ) {
+                    navController.navigate(route = ScreenRoute.DetailsScreen.name + "/${it.movieImdbID}")
+                }
             }
         }
     }
@@ -209,11 +209,17 @@ fun HomeScreen(
 @ExperimentalMaterial3Api
 @Composable
 fun TopAppBarComposable(
-    text: String
+    title: String,
+    actions: @Composable () -> Unit = {}
 ) {
     TopAppBar(
-        title = { Text(text = text) },
-        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Transparent),
-        scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(),
+        {
+            CenterAlignedTopAppBar(
+                title = { Text(text = title) },
+                colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Transparent),
+                scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+            )
+        },
+        actions = { actions() }
     )
 }

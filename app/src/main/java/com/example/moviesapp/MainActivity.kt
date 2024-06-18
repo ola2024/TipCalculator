@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Myapp {
                 Column(horizontalAlignment = Alignment.Start) {
-                    TopAppBarComposable(text = "Movies")
+                    TopAppBarComposable(title = "Movies", actions = {})
                     NavigationComponent()
                 }
             }
