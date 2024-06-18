@@ -49,7 +49,7 @@ fun MainContentRow(
     title: MovieItem,
     onItemClick: () -> Unit
 ) {
-    var expanded = remember {
+    val expanded = remember {
         mutableStateOf(false)
     }
     Card(
