@@ -1,6 +1,5 @@
 package com.example.moviesapp.components.widget
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -45,7 +44,7 @@ fun DetailsScreen(
         colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Column(
-            modifier = Modifier.padding(start = 20.dp, top = 30.dp),
+            modifier = Modifier.padding(start = 20.dp, top = 30.dp, bottom = 30.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.Start
         ) {
